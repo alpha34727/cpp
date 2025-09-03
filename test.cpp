@@ -1,31 +1,28 @@
 #include <iostream>
-#include <bitset>
 
+#include <string>
 using namespace std;
 
-char get_operator(int op) {
-    switch (op) {
-        case 0: return '+';
-        case 1: return '-';
-        case 2: return '*';
-        case 3: return '/';
-        default: return '?'; // Invalid operator
-    }
-}
+string s = "hello";
+string s2(s); // 複製構造
+string s3(10, 'a'); // 10個'a'
 
-int main() {
-    int operand;
+// 常用方法
+s.push_back('!'); // 添加字符到末尾 - O(1)
+s.pop_back(); // 刪除末尾字符 - O(1)
+s.size(); // 獲取長度 - O(1)
+s.length(); // 獲取長度 - O(1)
+s.empty(); // 判斷是否為空 - O(1)
+s.clear(); // 清空字串 - O(1)
+s.substr(1, 3); // 獲取子字串 - O(n)
+s.find("ll"); // 查找子字串 - O(n*m)
+s += " world"; // 字串連接 - O(n)
+s[i]; // 訪問字符 - O(1)
+s.compare("hello"); // 比較字串 - O(n)
+s.replace(1, 2, "aa"); // 替換子字串 - O(n)
 
-    for (int op1 = 0; op1 < 4; op1++) {
-        for (int op2 = 0; op2 < 4; op2++) {
-            for (int op3 = 0; op3 < 4; op3++) {
-                operand = (op1 << 4) | (op2 << 2) | op3;
-                bitset<6> x(operand);
-                cout << "case 0b" << x << ":" << endl;
-                cout << "    return" << " c1 " << get_operator(op1) << " c2 " 
-                     << get_operator(op2) << " c3 " 
-                     << get_operator(op3) << " c4;" << endl;
-            }
-        }
-    }
-}
+// 數值轉換
+int num = 123;
+string s = to_string(num); // 數字轉字串
+int n = stoi(s); // 字串轉整數
+double d = stod(s); // 字串轉浮點數
