@@ -24,6 +24,8 @@ const int prime_table[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,
 
 int sum_from_to[1229][1229];
 
+int ans[10001];
+
 int calc_nearest_prime(int n){
     for (int i = 0; i < 1229; i++){
         if (n < prime_table[i]){
@@ -60,18 +62,23 @@ int main()
         }
     }
 
-    while (cin >> n && n != 0){
+    ans[0] = 0;
+    ans[1] = 0;
+    for (int n = 2; n <= 10000; n++){
         int np = calc_nearest_prime(n);
         int cnt = 0;
         for (int i = 0; i <= np; i++){
             for (int j = i; j <= np; j++){
                 if (calc_sum(i, j) == n){
-                    // cout << prime_table[i] << ", " << prime_table[j] << endl;
                     cnt++;
                 }
             }
         }
-        cout << cnt << endl;
+        ans[n] = cnt;
+    }
+
+    while (cin >> n && n != 0){
+        cout << ans[n] << endl;
     }
 
 }
